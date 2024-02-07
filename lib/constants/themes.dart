@@ -9,6 +9,8 @@ const kWiteColor = Colors.white;
 const kBlackColor = Colors.black;
 
 class AppTheme {
-  static final style = GoogleFonts.bioRhyme(
+  static final bigTitle = GoogleFonts.bioRhyme(
       color: kWiteColor, fontSize: 25, fontWeight: FontWeight.bold);
+       static final bodyText = GoogleFonts.bioRhyme(
+      color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold);
 }

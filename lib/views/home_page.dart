@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/constants/themes.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:gap/gap.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -46,19 +46,34 @@ class HomePage extends StatelessWidget {
                   children: [
                     Expanded(
                         child: Container(
-                          padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(left: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("App Store",style: AppTheme.style),
-                            Text("Find The Apple product and accessories you are looking for",style: AppTheme.style),
-                            ElevatedButton(onPressed: (){}, child: Text("Shop New Year",style: AppTheme.style),)
-                             
+                          Text("App Store", style: AppTheme.bigTitle),
+                         const Gap( 10,color: Colors.black,),
+                          Text(
+                              "Find The Apple product and accessories you are looking for",
+                              style: AppTheme.bodyText.copyWith(
+                                color: kWiteColor,
+                              )),
+                              const Gap(5,color: Colors.black,),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child:
+                                Text("Shop New Year", style: AppTheme.bodyText),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kWiteColor,
+                                foregroundColor: kSecondaryColor),
+                          )
                         ],
                       ),
                     )),
-                    Image.asset("assets/general/landing.png",fit: BoxFit.fill,)
+                    Image.asset(
+                      "assets/general/landing.png",
+                      fit: BoxFit.fill,
+                    )
                   ],
                 ),
               )
