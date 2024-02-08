@@ -10,7 +10,19 @@ const kBlackColor = Colors.black;
 
 class AppTheme {
   static final bigTitle = GoogleFonts.bioRhyme(
-      color: kWiteColor, fontSize: 25, fontWeight: FontWeight.bold);
+      color: kWiteColor, fontSize: 15, fontWeight: FontWeight.bold);
        static final bodyText = GoogleFonts.bioRhyme(
-      color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold);
+      color: Colors.black, fontSize: 13, fontWeight: FontWeight.bold);
+       static final seeAlltext = GoogleFonts.bioRhyme(
+      color: kPrimarycolor, fontSize: 12, fontWeight: FontWeight.bold);
+      static final headText = GoogleFonts.bioRhyme(
+      color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold);
+       static final nameText = GoogleFonts.bioRhyme(
+      color: kPrimarycolor, fontSize: 17, fontWeight: FontWeight.bold);
+       static final descriptionText = GoogleFonts.bioRhyme(
+      color: Colors.black, fontSize: 15, fontWeight: FontWeight.normal);
+       static final cardTitle = GoogleFonts.bioRhyme(
+      color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold);
+       
+
 }

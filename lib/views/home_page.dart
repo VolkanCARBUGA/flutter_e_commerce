@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/constants/themes.dart';
+import 'package:flutter_e_commerce/controllers/product_controller.dart';
+import 'package:flutter_e_commerce/widgets/ads_banner_widget.dart';
+import 'package:flutter_e_commerce/widgets/chip_widget.dart';
+import 'package:flutter_e_commerce/widgets/product_card_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
   final imageSvg = "assets/general/store_brand_white.svg";
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+    final product=ref.watch(provider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kSecondaryColor,
@@ -31,50 +38,82 @@ class HomePage extends StatelessWidget {
       drawer: Drawer(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(25),
+          padding: const EdgeInsets.all(4),
           child: Column(
             children: [
               //Banner Ekleme
-              Container(
-                width: double.infinity,
-                height: 180,
-                decoration: BoxDecoration(
-                  color: kPrimarycolor,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
+              AdsBannerWidget(),
+              SizedBox(
+                height: 80,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
                   children: [
-                    Expanded(
-                        child: Container(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("App Store", style: AppTheme.bigTitle),
-                         const Gap( 10,color: Colors.black,),
-                          Text(
-                              "Find The Apple product and accessories you are looking for",
-                              style: AppTheme.bodyText.copyWith(
-                                color: kWiteColor,
-                              )),
-                              const Gap(5,color: Colors.black,),
-                          ElevatedButton(
-                            onPressed: () {},
-                            child:
-                                Text("Shop New Year", style: AppTheme.bodyText),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: kWiteColor,
-                                foregroundColor: kSecondaryColor),
-                          )
-                        ],
-                      ),
-                    )),
-                    Image.asset(
-                      "assets/general/landing.png",
-                      fit: BoxFit.fill,
+                    ChipWidget(
+                      chipLabel: 'Tümü',
+                      chipavatar: Icon(Icons.mobile_friendly),
+                    ),
+                    ChipWidget(
+                      chipLabel: 'Bilgisayarlar',
+                      chipavatar: Icon(Icons.computer_sharp),
+                    ),
+                    ChipWidget(
+                      chipLabel: 'Kulakliklar',
+                      chipavatar: Icon(Icons.headset_sharp),
+                    ),
+                    ChipWidget(
+                      chipLabel: 'Aksesuarlar',
+                      chipavatar: Icon(Icons.inventory),
+                    ),
+                    ChipWidget(
+                      chipLabel: 'Yazıcılar',
+                      chipavatar: Icon(Icons.print),
+                    ),
+                    ChipWidget(
+                      chipLabel: 'Kamera',
+                      chipavatar: Icon(Icons.photo_camera),
                     )
                   ],
+                ),
+              ),
+              Gap(10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Yeni Satışlar", style: AppTheme.headText),
+                  Text("Tümünü Gör", style: AppTheme.seeAlltext),
+                ],
+              ),
+
+             Container(
+              padding: EdgeInsets.all(4),
+              width: double.infinity,
+              height: 300,
+              
+              child: ListView.builder(
+                padding: EdgeInsets.all(4),
+                itemCount: 3,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+
+                itemBuilder: (context, index) => ProductCardWidget(index: index,),),
+             ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Özel Ürünler", style: AppTheme.headText),
+                  Text("Tümünü Gör", style: AppTheme.seeAlltext),
+                ],
+              ),
+              MasonryGridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: product.length,
+                shrinkWrap: true,
+                gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) => SizedBox(
+                  height: 250,
+                  child: ProductCardWidget(index: index,),
                 ),
               )
             ],
