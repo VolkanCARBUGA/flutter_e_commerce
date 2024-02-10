@@ -7,6 +7,7 @@ const kThirdColor = Color(0xffffdcbc);
 const kLightBackground = Color(0xffe8f6f8);
 const kWiteColor = Colors.white;
 const kBlackColor = Colors.black;
+const kyellowCoolor = Color.fromARGB(255, 246, 137, 4);
 
 class AppTheme {
   static final bigTitle = GoogleFonts.bioRhyme(
@@ -23,6 +24,10 @@ class AppTheme {
       color: Colors.black, fontSize: 15, fontWeight: FontWeight.normal);
        static final cardTitle = GoogleFonts.bioRhyme(
       color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold);
+       static final apptitle = GoogleFonts.bioRhyme(
+      color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold);
+       static final productNameTitle = GoogleFonts.bioRhyme(
+      color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold);
        
 
 }

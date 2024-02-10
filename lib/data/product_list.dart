@@ -9,7 +9,7 @@ List<ProductModel> productItems = [
     imgUrl: 'assets/products/airpods.jpg',
     title: 'AirPods Max',
     price: 599,
-    rating: 1,
+    rating: 3.50,
     review: 11277,
     shortDescription: 'Winning beats sound',
     longDescription:

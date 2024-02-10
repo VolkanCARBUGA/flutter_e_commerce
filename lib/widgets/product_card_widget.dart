@@ -14,7 +14,7 @@ class ProductCardWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final product = ref.watch(provider);
+    final product = ref.watch(proudctNotifierProvider);
 
     return Container(
       decoration: BoxDecoration(
